@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hotel</title>
+        <link rel = "stylesheet" type="text/css" href="../static/css/style.css">
+        <style>
+            
+     
+    #searchForm {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #searchForm input[type="text"], #searchForm input[type="date"], #searchForm input[type="submit"] {
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+    }
+
+  
+    .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .grid-item {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+        flex: 1;
+        min-width: 200px;
+        max-width: calc(50% - 20px);
+        border: 2px solid black; 
+        box-sizing: border-box; 
+        height: 500px; 
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        flex-direction: column;
+    }
+    
+    .user-form {
+        width: 80%;
+        max-width: 400px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .pagination button:hover {
+            background-color: #111;
+        }
+
+        .pagination button.disabled {
+            background-color: #777;
+            cursor: not-allowed;
+        }
+        </style>
+    </head>
+    <body>
+    
+    <nav>
+        <ul>
+            <li class="reserve">Book your dream trip with us today! </li>
+            <li><a href="homePage.html">Home page</a></li>
+            <li><a href="homeLogin.html">Login</a></li>
+            <li><a href="homeAboutUs.html">About us</a></li>
+        </ul>
+    </nav>
+    
+    <form id="searchForm" action="/search" method="GET">
+        <input type="text" name="destination" placeholder="Direction of travel">
+        <input type="date" name="startDate">
+        <input type="date" name="endDate">
+        <input type="submit" value="Search">
+    </form>
+    
+    <div class="grid-container">
+        <div class="grid-item">Item 1</div>
+        <div class="grid-item">Item 2</div>
+        <div class="grid-item">Item 3</div>
+        <div class="grid-item">Item 4</div>
+        <div class="grid-item">Item 5</div>
+        <div class="grid-item">Item 6</div>
+        <div class="grid-item">Item 7</div>
+        <div class="grid-item">Item 8</div>
+    </div>
+    
+    <div class="pagination">
+        <button id="prev" class="disabled">Previous</button>
+        <button id="next">Next</button>
+    </div>
+    
+    <script>
+        const items = document.querySelectorAll('.grid-item');
+        const itemsPerPage = 4;
+        let currentPage = 1;
+        let startIndex = 0;
+    
+        function showPage(start) {
+            const end = start + itemsPerPage;
+    
+            items.forEach((item, index) => {
+                if (index >= start && index < end) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+    
+            document.getElementById('prev').classList.toggle('disabled', start === 0);
+            document.getElementById('next').classList.toggle('disabled', end >= items.length);
+        }
+    
+        document.getElementById('prev').addEventListener('click', () => {
+            if (startIndex > 0) {
+                startIndex--;
+                showPage(startIndex);
+            }
+        });
+    
+        document.getElementById('next').addEventListener('click', () => {
+            if (startIndex + itemsPerPage < items.length) {
+                startIndex++;
+                showPage(startIndex);
+            }
+        });
+    
+        showPage(startIndex);
+    </script>
+    
+    
+    </body>
+    </html>

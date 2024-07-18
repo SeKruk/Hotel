@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel</title>
+    <link rel = "stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+  main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.main-content .guest,
+.main-content .price,
+.main-content .hotel,
+.main-content .room,
+.main-content .reservation {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.main-content img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #555;
+}
+
+.add-btn {
+    color: #343a40;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <span class="title">Hotel</span>
+    </header>
+    <div class="main-content">
+        <div class="guest">
+            <p class="guest-name">
+                Guest
+            </p>
+            <img src="https://pl.fotoomnia.com/thumbnails/720/a90535022277e66e3d62c307de6f96f0.jpg">
+            <div class="dropdown">
+                <button class="dropbtn">Options</button>
+                <div class="dropdown-content">
+                    <a href="deleteGuest.html" class="add-btn">Delete guest</a>
+                    <a href="findGuestByIdAdminPage.html" class="add-btn">Find guest by ID</a>
+                    <a href="allGuestPanelAdmin.html" class="add-btn">All guest</a>
+
+                </div>
+            </div>
+        </div>
+            <div class="price">
+                <p class="price-name">
+                    Price
+                </p>
+                <img src = "https://wzr.pl/wp-content/uploads/2024/01/closeup-shot-businessman-s-hands-counting-stacks-coins-after-business-success-696x472.jpg">
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="price.html" class="add-btn">Add guest</a>
+                        <a href="#" class="add-btn">Delete guest</a>
+                        <a href="#" class="add-btn">All guest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hotel">
+                <p class="hotel-name">
+                    Hotel
+                </p>
+                <img src = "https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg">
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="add-btn">Add guest</a>
+                        <a href="#" class="add-btn">Delete guest</a>
+                        <a href="#" class="add-btn">All guest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room">
+                <p class="room-name">
+                    Room
+                </p>
+                <img src = "https://www.prestizowehotele.pl/wp-content/uploads/2017/06/luksusowe-hotele-spa-2.jpg">
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="add-btn">Add guest</a>
+                        <a href="#" class="add-btn">Delete guest</a>
+                        <a href="#" class="add-btn">All guest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="reservation">
+                <p class="reservation-name">
+                    Reservation
+                </p>
+                <img src = "https://legalserviceindia.com/legal/uploads/theneedforreviewofthecastebasedreservationsysteminindia_7572005884.jpg">
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="add-btn">Add guest</a>
+                        <a href="#" class="add-btn">Delete guest</a>
+                        <a href="#" class="add-btn">All guest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="guest">
+                <p class="guest-name">
+                    Report
+                </p>
+                <img src = "https://media.licdn.com/dms/image/C4E12AQH4bcBzdD605Q/article-cover_image-shrink_600_2000/0/1629361158472?e=2147483647&v=beta&t=a7pXC6DGc7gjKGGsTuoThABat30Gi9pe0Tn3pEZHW3U">
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="add-btn">Add guest</a>
+                        <a href="#" class="add-btn">Delete guest</a>
+                        <a href="#" class="add-btn">All guest</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

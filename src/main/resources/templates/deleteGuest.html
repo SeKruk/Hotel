@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Guest</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        input[type="submit"], button[type="submit"] {
+            cursor: pointer;
+            background-color: #333;
+            color: rgb(215, 35, 35);
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="main-content">
+        <div class="user-form">
+            <h2>Delete Guest</h2>
+            <form id="deleteGuestForm">
+                <div class="form-group">
+                    <label for="guestId">Guest ID</label>
+                    <input type="number" id="guestId" name="guestId" required>
+                </div>
+                <button type="submit" class="add-btn">Delete</button>
+            </form>
+        </div>
+    </div>
+  
+
+    <script>
+        document.getElementById('deleteGuestForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const guestId = document.getElementById('guestId').value;
+            fetch(`/api/guests/delete/${guestId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.status === 204) {
+                    alert('Guest deleted successfully!');
+                    document.getElementById('deleteGuestForm').reset();
+                } else {
+                    alert('Failed to delete guest. Guest not found.');
+                }
+            })
+            .catch(error => {
+                alert('An error occurred while deleting the guest.');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+    width: 100%; /* Pełna szerokość pola tekstowego */
+    height: 150px; /* Wysokość pola tekstowego */
+    box-sizing: border-box; /* Ustawienie box-sizing na border-box, aby padding i border nie wpływały na szerokość */
+}
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .image-container {
+            margin: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: center;
+            }
+
+            form {
+                margin-left: 250px;
+                margin-right: 50px;
+            }
+
+            .image-container {
+                flex: 0 0 auto;
+            }
+
+            img {
+                max-width: 50%;
+            }
+        }
+
+        main {
+            text-align: center;
+        }
+
+        p {
+            max-width: 800px;
+            margin: auto;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Wstawienie menu za pomocą JavaScript -->
+    <div id="menu">
+        <script>
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu').innerHTML = data;
+                });
+        </script>
+    </div>
+
+    <!-- Reszta zawartości strony -->
+    <main class="main-content">
+        <h1>About us</h1>
+        <p>
+            Our hotel booking app is an innovative tool that allows users to easily and quickly find and book the perfect place to stay. 
+            With the convenience and satisfaction of our users in mind, the app was designed to offer an intuitive interface,
+             a wide range of options and the latest technology.
+            The simple and clear design makes it easy to navigate through the app.
+            Quick filters help find hotels that meet specific criteria.
+            Extensive database of hotels available worldwide.
+            Detailed descriptions, photos and guest reviews help you make the best decision.          
+            Filters to narrow the search by various criteria.
+            Browse the available options and use filters to customize your results.
+            Select a room and make a reservation.           
+            Receive instant confirmation of your reservation.           
+            Join our community and enjoy a seamless hotel booking process around the world!
+        </p>
+
+        <h2>If you have a question write to us</h2>
+    </main>
+
+    <div class="container">
+        <form action="#" method="post">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <label for="text">Enter your message:</label>
+            <input type="text" id="text" name="text">
+            <input type="submit" value="Send">
+        </form>
+
+        <div class="image-container">
+            <img src="https://adria-management.com/wp-content/uploads/2016/07/Contact-Us.png" alt="Image">
+        </div>
+    </div>
+</body>
+</html>

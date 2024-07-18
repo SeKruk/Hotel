@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add price</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+    <header>
+        <span class="title">Price</span>
+    </header>
+    <div class="main-content">
+        <div class="user-form">
+            <h2>Add price</h2>
+            <form th:action="@{/user/save}" method="post">
+                <div class="form-group">
+                    <label for="nameHotel">Hotel</label>
+                    <input type="text" id="nameHotel" name="nameHotel" required>
+                </div>
+                <div class="form-group">
+                    <label for="room">Room</label>
+                    <input type="number" id="room" name="room" required>
+                </div>
+                <div class="form-group">
+                    <label for="costs">Costs 1 night </label>
+                    <input type="text" id="costs" name="costs" required>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End date</label>
+                    <input type="date" id="endDate" name="endDate" required>
+                </div>
+                <button type="submit" class="add-btn">Add</button>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
